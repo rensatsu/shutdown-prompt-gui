@@ -11,10 +11,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Setting up cache
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: ./dependencies
+        key: ${{ runner.os }}-v1
+
     - name: Install dependencies
       run: |
-        choco install autohotkey.portable
-        choco install imagemagick.tool
+        mkdir .\dependencies
+        curl https://www.autohotkey.com/download/ahk.zip -L -o dep_ahk.zip
+        7z e dep_ahk.zip -o .\dependencies\
+        curl https://imagemagick.org/download/binaries/ImageMagick-7.0.10-14-portable-Q16-x64.zip -L -o dep_magick.zip
+        7z e dep_magick.zip -o .\dependencies\
 
     - name: Build app
       run: |
