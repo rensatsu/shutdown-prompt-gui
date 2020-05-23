@@ -1,3 +1,5 @@
 icon.ico
+*.zip
 *.exe
 dist/
+dependencies/
