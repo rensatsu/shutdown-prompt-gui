@@ -11,15 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setting up cache
-      uses: actions/cache@v1
-      id: cache
-      with:
-        path: |
-          C:\ProgramData\chocolatey\bin
-          C:\ProgramData\chocolatey\lib
-        key: ${{ runner.os }}-v2
-
     - name: Install dependencies
       run: |
         choco install autohotkey.portable
