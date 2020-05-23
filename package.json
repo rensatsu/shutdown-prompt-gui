@@ -1,0 +1,12 @@
+{
+  "name": "shutdown-prompt-gui",
+  "version": "1.0.0",
+  "description": "A simple GUI Prompt (confirmation) to shutdown computer",
+  "scripts": {
+    "build:app": "build-app.bat",
+    "build:icon": "build-icon.bat"
+  },
+  "keywords": [],
+  "author": "Rensatsu",
+  "license": "MIT"
+}
