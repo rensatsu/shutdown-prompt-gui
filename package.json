@@ -4,7 +4,9 @@
   "description": "A simple GUI Prompt (confirmation) to shutdown computer",
   "scripts": {
     "build:app": "build-app.bat",
-    "build:icon": "build-icon.bat"
+    "build:icon": "build-icon.bat",
+    "tag:patch-alpha": "npm version prerelease --preid alpha",
+    "tag:patch": "npm version patch"
   },
   "keywords": [],
   "author": "Rensatsu",

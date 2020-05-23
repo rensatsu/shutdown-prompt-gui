@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    tags: [ "v*" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Build
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        choco install autohotkey.portable
+        choco install imagemagick.tool
+
+    - name: Build app
+      run: |
+        npm run build:icon
+        npm run build:app
+
+    - name: Create an archive
+      run: |
+        7z a dist/shutdown-prompt-gui.7z dist/shutdown-prompt-gui.exe
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+
+    - name: Upload release asset
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./dist/shutdown-prompt-gui.7z
+        asset_name: shutdown-prompt-gui_${{ github.ref }}.7z
+        asset_content_type: application/x-7z-compressed
