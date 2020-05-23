@@ -21,10 +21,12 @@ jobs:
     - name: Install dependencies
       run: |
         mkdir .\dependencies
+        mkdir .\dependencies\ahk
+        mkdir .\dependencies\magick
         curl.exe https://www.autohotkey.com/download/ahk.zip -L -o dep_ahk.zip
-        7z e dep_ahk.zip -odependencies\
+        7z e dep_ahk.zip -odependencies\ahk
         curl.exe https://imagemagick.org/download/binaries/ImageMagick-7.0.10-14-portable-Q16-x64.zip -L -o dep_magick.zip
-        7z e dep_magick.zip -odependencies\
+        7z e dep_magick.zip -odependencies\magick
 
     - name: Build app
       run: |

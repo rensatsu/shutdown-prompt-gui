@@ -1,5 +1,5 @@
 @echo off
-set PATH=%PATH%;%~dp0\dependencies;C:\Program Files\AutoHotkey\Compiler
+set PATH=%PATH%;%~dp0\dependencies\ahk;C:\Program Files\AutoHotkey\Compiler
 set OUTPATH="dist"
 set OUTNAME="shutdown-prompt-gui.exe"
 set INNAME="shutdown-prompt-gui.ahk"
