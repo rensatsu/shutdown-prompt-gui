@@ -1,6 +1,6 @@
 {
   "name": "shutdown-prompt-gui",
-  "version": "1.0.5-alpha.0",
+  "version": "1.0.5",
   "description": "A simple GUI Prompt (confirmation) to shutdown computer",
   "scripts": {
     "build:app": "build-app.bat",
