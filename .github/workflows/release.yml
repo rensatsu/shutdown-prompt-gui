@@ -44,5 +44,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./dist/shutdown-prompt-gui.7z
-        asset_name: shutdown-prompt-gui_${{ github.ref }}.7z
+        asset_name: shutdown-prompt-gui.7z
         asset_content_type: application/x-7z-compressed
